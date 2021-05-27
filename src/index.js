@@ -3,6 +3,8 @@ const fetchUrl = 'http://localhost:3000/ramens'
 let imgDiv = document.querySelector('#ramen-menu')
 let imgDetail = document.querySelector('.detail-image')
 let ramenRating = document.querySelector('#ramen-rating')
+// let ramenComment = document.querySelector()
+
 
 //** Don't forget to call your functions you dummy!! **//
 fetchRamen()
@@ -19,6 +21,7 @@ function renderRamenToDom(ramenData){
         let imgTag = document.createElement('img')
         imgTag.src = ramenUrl.image
         imgTag.alt = ramenUrl.name
+        imgTag.restaurant = ramenUrl.restaurant
         imgDiv.appendChild(imgTag)
     })
 }
@@ -26,12 +29,13 @@ function renderRamenToDom(ramenData){
 document.getElementById('ramen-menu').addEventListener('click', renderRamenDetail)
 
 function renderRamenDetail(ramen){
-    let ramenSelection = ramen.target
-    console.log(ramen)
-    // console.log(ramen.target)
-    imgDetail.src = ramenSelection.src
+    console.log(ramen.target)
+    // let ramenSelection = ramen.target
+    imgDetail.src = ramen.target.src
     let ramenh2 = document.querySelector('.name')
     ramenh2.textContent = ramen.target.alt
+    let ramenRest = document.querySelector('.restaurant')
+    ramenRest.textContent = ramen.target.restaurant
     // console.log(ramen.target.alt)
 }
 
